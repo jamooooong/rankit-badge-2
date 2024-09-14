@@ -3,12 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Type" content="image/svg+xml">
-    <title>Dynamic SVG</title>
+    <title>Dynamic SVG Badge</title>
 </head>
 <body>
-    <div id="svg-container"></div>
+    <script>
+        // URL에서 name 쿼리 파라미터 추출
+        const urlParams = new URLSearchParams(window.location.search);
+        const name = urlParams.get('name') || 'Default Name';
 
-    <script src="script.js"></script>
+        // SVG 문자열 생성
+        const svgString = `
+            <svg xmlns="http://www.w3.org/2000/svg" width="300" height="150" viewBox="0 0 300 150">
+                <rect width="300" height="150" fill="#f9f9f9" stroke="#4CAF50" stroke-width="4" rx="15" ry="15"/>
+                <text x="50%" y="50%" font-size="24" font-family="Arial, sans-serif" fill="#333" dominant-baseline="middle" text-anchor="middle">
+                    ${name}
+                </text>
+            </svg>
+        `;
+
+        // SVG 문자열을 데이터 URI로 변환
+        const encodedSvg = encodeURIComponent(svgString);
+        const dataUri = `data:image/svg+xml;charset=utf-8,${encodedSvg}`;
+
+        // 이미지 태그를 생성하여 SVG를 표시
+        const img = document.createElement('img');
+        img.src = dataUri;
+        img.alt = 'Dynamic SVG Badge';
+        document.body.appendChild(img);
+    </script>
 </body>
 </html>

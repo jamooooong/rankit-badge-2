@@ -1,0 +1,15 @@
+{
+  "name": "rankit-badge-2",
+  "version": "1.0.0",
+  "description": "![Vite Badge](https://jamooooong.github.io/rankit-badge/vite.svg) ![Vite Badge](https://jamooooong.github.io/rankit-badge-2/?name=John)",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.0"
+  }
+}
