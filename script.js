@@ -16,5 +16,12 @@ const svgContent = `
 </svg>
 `;
 
-// SVG를 HTML에 삽입
-document.getElementById('svg-container').innerHTML = svgContent;
+// URL로 직접 접근한 경우 SVG만 반환
+if (document.contentType === 'application/javascript') {
+    document.body.innerHTML = svgContent;
+    document.body.style.margin = '0';
+    document.body.style.padding = '0';
+} else {
+    // HTML 페이지에서 로드된 경우 SVG를 컨테이너에 삽입
+    document.getElementById('svg-container').innerHTML = svgContent;
+}
